@@ -14,7 +14,7 @@ Afin de favoriser une bonne concentration, vous pouvez bien entendu écouter de 
 
 # Déroulement
 
-1) Vous ne recevrez dans un premier temps que le backlog de l'épreuve, sans le code.
+1) Vous recevez dans un premier temps les consignes générales ainsi que le projet à mettre en place sur votre environnement.
 2) Nous étudierons ensemble ce contenu puis vous aurez l'occasion de poser des questions.
 3) Vous pourrez ensuite "fork" le dépôt et vous mettre au travail.
 4) Une heure spécifique sera définie en classe pour d'éventuelles questions.
@@ -30,7 +30,7 @@ Afin de favoriser une bonne concentration, vous pouvez bien entendu écouter de 
 Le projet que vous venez de *fork* + *clone* est fonctionnel. Autrement dit après avoir réalisé la commande suivante:
 
 ```java
-mvn clean spring-boot:run
+    mvn clean spring-boot:run
 ```
 
 Tomcat écoute bien sur le port 8080 et cette commande :
@@ -64,14 +64,14 @@ produit ce résultat:
 Ce tableau est donné à titre d'information. Lors de la correction les pondérations peuvent être modifiés
 afin de mieux valoriser vos travaux.
 
-| Critères globaux                                    | Valeur |
-|:----------------------------------------------------|:-------|
-| La compilation ne produit pas d'erreur              | 3pts   |
-| Aucune regression fonctionnelle                     | 3pts   |
-| Les exemples d'appels (controller) sont à jour      | 3pts   |
-| Les pratiques Git-flow sont suivies                 | 3pts   |
-| Les pratiques du *Conventional Commit* sont suivies | 3pts   |
-| Les routes retournent bien les JSON demandés        | 3pts   |
-| Le minimum de code a été produit                    | 3pts   |
-| L'architecture Spring a été respectée               | 3pts   |
-| Le code est soigné (bonnes pratiques)               | 3pts   |
+| Critères globaux                                                                                                    | Valeur |
+|:--------------------------------------------------------------------------------------------------------------------|:-------|
+| La compilation ne produit pas d'erreur                                                                              | 3pts   |
+| Aucune regression fonctionnelle                                                                                     | 3pts   |
+| Les exemples d'appels (controller) sont à jour                                                                      | 3pts   |
+| Les pratiques [Git-flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) sont suivies | 3pts   |
+| Les pratiques du [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) sont suivies                                                               | 3pts   |
+| Les routes retournent bien les JSON demandés                                                                        | 3pts   |
+| Le minimum de code a été produit                                                                                    | 3pts   |
+| L'architecture Spring a été respectée                                                                               | 3pts   |
+| Le code est soigné (bonnes pratiques)                                                                               | 3pts   |
