@@ -1,0 +1,29 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+'packages
+package "Controllers"
+{
+    class EmployeeController{}
+    class EmployeeNotFoundAdvice{}
+    class EmployeeNotFoundException{}
+}
+
+package "Entities"
+{
+    class Employee{}
+}
+
+package "Repositories"
+{
+    class EmployeeRepository{}
+}
+
+'relations
+EmployeeController --> Employee
+EmployeeController --> EmployeeRepository
+
+EmployeeController ..> EmployeeNotFoundException : throws
+EmployeeNotFoundAdvice --> EmployeeNotFoundException
+@enduml
