@@ -14,10 +14,9 @@ Afin de favoriser une bonne concentration, vous pouvez bien entendu écouter de 
 
 # Déroulement
 
-1) Vous recevez dans un premier temps les consignes générales ainsi que le projet à mettre en place sur votre environnement.
-2) Nous étudierons ensemble ce contenu puis vous aurez l'occasion de poser des questions.
-3) Vous pourrez ensuite "fork" le dépôt et vous mettre au travail.
-4) Une heure spécifique sera définie en classe pour d'éventuelles questions.
+1) Nous étudierons ensemble ce contenu en début d'épreuve.
+2) Après avoir *fork* et *clone* le dépôt, nous validerons ensemble que votre environnement est prêt.
+3) Une seconde session de "question-réponse" vous sera offerte à "mi-parcours".
 
 # Livraison finale
 
@@ -27,7 +26,7 @@ Afin de favoriser une bonne concentration, vous pouvez bien entendu écouter de 
 
 # Point de départ
 
-Le projet que vous venez de *fork* + *clone* est fonctionnel. Autrement dit après avoir réalisé la commande suivante:
+Le projet que vous venez de *fork* + *clone* est fonctionnel. Autrement dit après avoir réalisé la commande suivante :
 
 ```java
     mvn clean spring-boot:run
