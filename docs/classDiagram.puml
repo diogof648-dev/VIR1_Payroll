@@ -5,14 +5,29 @@ skinparam classAttributeIconSize 0
 'packages
 package "Controllers"
 {
-    class EmployeeController{}
+    class EmployeeController{
+        - repository : EmployeeRepository
+        + EmployeeController(EmployeeRepository repository)
+    }
     class EmployeeNotFoundAdvice{}
     class EmployeeNotFoundException{}
 }
 
 package "Entities"
 {
-    class Employee{}
+    class Employee{
+        - id : long
+        - name : string
+        - role : string
+        + Employee()
+        + Employee(string name, string role)
+        + <get,set> id() : long
+        + <get,set> name() : string
+        + <get,set> role() : string
+        + <override> equals() : bool
+        + <override> hashCode() : int
+        + <override> toString() : string
+    }
 }
 
 package "Repositories"
@@ -20,10 +35,23 @@ package "Repositories"
     class EmployeeRepository{}
 }
 
+package "Java"
+{
+    class RuntimeException{}
+}
+
+package "Spring"
+{
+    class JpaRepository{}
+}
+
 'relations
-EmployeeController --> Employee
-EmployeeController --> EmployeeRepository
+EmployeeController ..> Employee
+EmployeeController o-- EmployeeRepository
 
 EmployeeController ..> EmployeeNotFoundException : throws
-EmployeeNotFoundAdvice --> EmployeeNotFoundException
+EmployeeNotFoundAdvice --^ EmployeeNotFoundException
+EmployeeNotFoundException --^ RuntimeException
+
+EmployeeRepository --^ JpaRepository
 @enduml
