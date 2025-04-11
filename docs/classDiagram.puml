@@ -11,6 +11,14 @@ package "Controllers"
     }
     class EmployeeNotFoundAdvice{}
     class EmployeeNotFoundException{}
+
+    class DepartmentController{
+        - repository : DepartmentRepository
+        + DepartmentController(DepartmentRepository repository)
+    }
+
+    class DepartmentNotFoundAdvice{}
+    class DepartmentNotFoundException{}
 }
 
 package "Entities"
@@ -19,20 +27,33 @@ package "Entities"
         - id : long
         - name : string
         - role : string
+        - department : Department
         + Employee()
         + Employee(string name, string role)
         + <get,set> id() : long
         + <get,set> name() : string
         + <get,set> role() : string
+        + <get,set> department() : Department
         + <override> equals() : bool
         + <override> hashCode() : int
         + <override> toString() : string
+    }
+
+    class Department{
+        - id : long
+        - name : string
+        - employees : []
+        + Department(string name)
+        + <get,set> id() : long
+        + <get, set> name() : string
+        + <get, set> employees() : []
     }
 }
 
 package "Repositories"
 {
     class EmployeeRepository{}
+    class DepartmentRepository{}
 }
 
 package "Java"
@@ -54,4 +75,19 @@ EmployeeNotFoundAdvice --^ EmployeeNotFoundException
 EmployeeNotFoundException --^ RuntimeException
 
 EmployeeRepository --^ JpaRepository
+
+
+
+DepartmentController ..> Department
+DepartmentController o-- DepartmentRepository
+
+DepartmentController ..> DepartmentNotFoundException : throws
+DepartmentNotFoundAdvice --^ DepartmentNotFoundException
+DepartmentNotFoundException --^ RuntimeException
+
+DepartmentRepository --^ JpaRepository
+
+
+
+Employee "1" -- "0..*" Department
 @enduml
