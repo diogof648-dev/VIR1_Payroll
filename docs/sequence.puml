@@ -1,0 +1,95 @@
+@startuml
+actor User as user
+participant EmployeeController as EmpController
+participant Employee as emp
+participant EmployeeRepository as EmpRepo
+
+user -> EmpController : all
+activate EmpController
+
+EmpController -> EmpRepo : findAll
+activate EmpRepo
+EmpRepo -> EmpController : return List<Employee>
+deactivate EmpRepo
+
+EmpController -> user : return List<Employee>
+deactivate EmpController
+
+
+
+user -> EmpController : newEmployee
+activate EmpController
+
+EmpController -> emp : new
+activate emp
+emp -> EmpController : return Employee
+deactivate emp
+EmpController -> EmpRepo : save
+activate EmpRepo
+EmpRepo -> EmpController : return Employee
+deactivate EmpRepo
+
+EmpController -> user : return Employee
+deactivate EmpController
+
+
+
+user -> EmpController : one
+activate EmpController
+
+EmpController -> EmpRepo : findById
+activate EmpRepo
+EmpRepo -> EmpController : return Employee
+
+EmpController -> user : return Employee
+
+group EmployeeNotFound
+    EmpRepo -> EmpController : return empty
+    deactivate EmpRepo
+
+    EmpController -> user : throw EmployeeNotFoundException
+    deactivate EmpController
+end
+
+
+
+user -> EmpController : replaceEmployee
+activate EmpController
+
+EmpController -> emp : new
+activate emp
+emp -> EmpController : return Employee
+deactivate emp
+
+EmpController -> EmpRepo : findById
+activate EmpRepo
+
+group EmployeeNotFound
+    EmpRepo -> EmpController : empty
+    EmpController -> EmpRepo : save
+    EmpRepo -> EmpController : return Employee
+end
+
+EmpRepo -> EmpController : return Employee
+
+EmpController -> EmpController : map
+
+EmpController -> EmpRepo : save
+EmpRepo -> EmpController : return Employee
+
+EmpController -> user : return Employee
+deactivate EmpController
+deactivate EmpRepo
+
+
+
+user -> EmpController : deleteEmployee
+activate EmpController
+EmpController -> EmpRepo : deleteById
+activate EmpRepo
+EmpRepo -> EmpController : void
+deactivate EmpRepo
+EmpController -> user : void
+deactivate EmpController
+
+@enduml
